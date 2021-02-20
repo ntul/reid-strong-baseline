@@ -1,0 +1,1 @@
+python3 tools/train.py --config_file='configs/softmax_triplet_with_center.yml' MODEL.DEVICE_ID "('0')" DATASETS.NAMES "('market1501')" DATASETS.ROOT_DIR "('./')" MODEL.PRETRAIN_CHOICE "('imagenet')" MODEL.PRETRAIN_PATH "('./r50_ibn_a.pth')" OUTPUT_DIR "('./checkpoints')"

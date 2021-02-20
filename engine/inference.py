@@ -50,7 +50,8 @@ def inference(
         cfg,
         model,
         val_loader,
-        num_query
+        num_query,
+        val_set
 ):
     device = cfg.MODEL.DEVICE
 
@@ -58,7 +59,7 @@ def inference(
     logger.info("Enter inferencing")
     if cfg.TEST.RE_RANKING == 'no':
         print("Create evaluator")
-        evaluator = create_supervised_evaluator(model, metrics={'r1_mAP': R1_mAP(num_query, max_rank=50, feat_norm=cfg.TEST.FEAT_NORM)},
+        evaluator = create_supervised_evaluator(model, metrics={'r1_mAP': R1_mAP(val_set, num_query, max_rank=50, feat_norm=cfg.TEST.FEAT_NORM)},
                                                 device=device)
     elif cfg.TEST.RE_RANKING == 'yes':
         print("Create evaluator for reranking")
